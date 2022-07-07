@@ -39,6 +39,10 @@ const (
 	// HecoMainNet/Test
 	HecoMainNet EthereumNet = 128
 	HecoTestNet EthereumNet = 256
+
+	// MaticMainNet/Test
+	MaticMainNet EthereumNet = 137
+	MaticTestNet EthereumNet = 80001
 )
 
 // Configuration represents json config file
@@ -174,6 +178,10 @@ func (b *EthereumRPC) Initialize() error {
 		b.Testnet = false
 		b.Network = "hecolivenet"
 		break
+	case MaticMainNet:
+		b.Testnet = false
+		b.Network = "maticlivenet"
+		break
 	case TestNet:
 		b.Testnet = true
 		b.Network = "testnet"
@@ -187,6 +195,9 @@ func (b *EthereumRPC) Initialize() error {
 	case HecoTestNet:
 		b.Testnet = true
 		b.Network = "hecotestnet"
+	case MaticTestNet:
+		b.Testnet = true
+		b.Network = "matictestnet"
 	default:
 		return errors.Errorf("Unknown network id %v", id)
 	}
